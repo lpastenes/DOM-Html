@@ -8,7 +8,7 @@ class Producto {
 }
 
 let baseDatos = [];
-baseDatos.push(new Producto(1, "../img/airport.jpg", "Aeropuerto - Chicureo", 50000) )
+baseDatos.push(new Producto(1, "./img/airport.jpg", "Aeropuerto - Chicureo", 50000) )
 baseDatos.push(new Producto(2, "../img/tour_santiago.jpg", "City Tour Santiago", 40000) )
 baseDatos.push(new Producto(3, "../img/lan-chile.jpg", "Chicureo - Aeropuerto", 40000) )
 baseDatos.push(new Producto(4, "../img/valpo.jpg", "Tour Valparaiso", 40000) )
