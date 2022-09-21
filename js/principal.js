@@ -8,22 +8,24 @@ class Producto {
 }
 
 let baseDatos = [];
-baseDatos.push(new Producto(1, "../img/airport.jpg", "Aeropuerto - Chicureo", 50000) )
-baseDatos.push(new Producto(2, "../img/tour_santiago.jpg", "City Tour Santiago", 40000) )
-baseDatos.push(new Producto(3, "../img/lan-chile.jpg", "Chicureo - Aeropuerto", 40000) )
-baseDatos.push(new Producto(4, "../img/valpo.jpg", "Tour Valparaiso", 40000) )
-baseDatos.push(new Producto(5, "../img/vina-del-mar2.jpg", "Tour Viña del Mar", 40000) )
-baseDatos.push(new Producto(6, "../img/hotel.jpg", "Aeropuerto - Hotel", 50000) )
-baseDatos.push(new Producto(7, "../img/valle-nevado.jpg", "Aeropuerto - Valle Nevado", 50000) )
-baseDatos.push(new Producto(8, "../img/valpo.jpg", "Aeropuerto - Valparaíso", 50000) )
-baseDatos.push(new Producto(9, "../img/vina-del-mar.jpg", "Aeropuerto - Viña del Mar", 40000) )
-baseDatos.push(new Producto(10, "../img/beach.jpg", "Tour Isla Negra", 40000) )
+baseDatos.push(new Producto(1, "./img/airport.jpg", "Aeropuerto - Chicureo", 28000) )
+baseDatos.push(new Producto(2, "./img/tour_santiago.jpg", "City Tour Santiago", 30000) )
+baseDatos.push(new Producto(3, "./img/lan-chile.jpg", "Chicureo - Aeropuerto", 28000) )
+baseDatos.push(new Producto(4, "./img/valpo.jpg", "Tour Valparaiso", 30000) )
+baseDatos.push(new Producto(5, "./img/vina-del-mar2.jpg", "Tour Viña del Mar", 30000) )
+baseDatos.push(new Producto(6, "./img/hotel.jpg", "Aeropuerto - Hotel", 28000) )
+baseDatos.push(new Producto(7, "./img/valle-nevado.jpg", "Aeropuerto - Valle Nevado", 40000) )
+baseDatos.push(new Producto(8, "./img/valpo.jpg", "Aeropuerto - Valparaíso", 40000) )
+baseDatos.push(new Producto(9, "./img/vina-del-mar.jpg", "Aeropuerto - Viña del Mar", 40000) )
+baseDatos.push(new Producto(10, "./img/beach.jpg", "Tour Isla Negra", 30000) )
 
-let carrito = {};
+let carrito = {}; // CARRITO DE COMPRA
 
 //DOM
 const card = document.querySelector('#tarjeta');
-const template = document.querySelector('#template-card').content;
+const templateCard = document.querySelector('#template-card').content;
+const templateCarrito = document.getElementById('template-carrito').content;
+const textCarro = document.getElementById('footer');
 const fragmento = document.createDocumentFragment();
 const items = document.getElementById('items');
 
@@ -31,11 +33,11 @@ const items = document.getElementById('items');
 function render(baseDatos) {
     card.innerHTML = ""
     baseDatos.forEach((baseDatos) => {
-        template.querySelector('img').setAttribute("src", baseDatos.imgUrl);
-        template.querySelector('.card-title').textContent = baseDatos.titulo;
-        template.querySelector('.card-text').textContent = baseDatos.precio;
-        template.querySelector('.btn-warning').dataset.id = baseDatos.id;
-        const clone = template.cloneNode(true);
+        templateCard.querySelector('img').setAttribute("src", baseDatos.imgUrl);
+        templateCard.querySelector('.card-title').textContent = baseDatos.titulo;
+        templateCard.querySelector('.card-text').textContent = baseDatos.precio;
+        templateCard.querySelector('.btn-warning').dataset.id = baseDatos.id;
+        const clone = templateCard.cloneNode(true);
         fragmento.appendChild(clone);
     });
     card.appendChild(fragmento);
@@ -64,6 +66,7 @@ btnFiltro3.addEventListener('click', () => {
 
 //PRESIONAR BTN COMPRAR EN DIV DE LAS CARD
 tarjeta.addEventListener('click', e => {
+    textCarro.querySelector('.text-carroVacio').textContent = "";  // ELIMINA TEXTO CARRO VACIO
     addCarrito(e);
 });
 
@@ -86,13 +89,27 @@ const setCarrito = objeto => {
         productoCarro.cantidad = carrito[productoCarro.id].cantidad + 1        
     };
     carrito[productoCarro.id] = {...productoCarro};
-    renderCarrito();    
+    renderCarrito();      
 };
 
-// VISULAIZAR ELEMENTOS EN EL CARRITO (EN PROCESO)
-const renderCarrito = () => {
-    console.log(carrito);
-}
+// VISULAIZAR ELEMENTOS EN EL CARRITO 
+const renderCarrito = () => {   
+    items.innerHTML = ""; 
+    Object.values(carrito).forEach(productoCarro => {
+        templateCarrito.querySelector('th').textContent = productoCarro.id
+        templateCarrito.querySelectorAll('td')[0].textContent = productoCarro.titulo
+        templateCarrito.querySelectorAll('td')[1].textContent = productoCarro.cantidad
+        templateCarrito.querySelector('.btn-secondary').dataset.id = productoCarro.id
+        templateCarrito.querySelector('.btn-warning').dataset.id = productoCarro.id
+        templateCarrito.querySelector('span').textContent = productoCarro.precio * productoCarro.cantidad
+
+        const clone = templateCarrito.cloneNode(true);
+        fragmento.appendChild(clone);
+    });
+    items.appendChild(fragmento)
+};
+
+
 
 
 

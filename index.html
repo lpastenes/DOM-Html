@@ -58,7 +58,7 @@
 
                 <!-- Carro compra -->
                 <div class="carro">
-                    <a href="#"><i class="fa-solid fa-cart-shopping text-dark"></i></a>
+                    <a data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-cart-shopping text-dark"></i></a>
                     <a href="#"><i class="fa-brands fa-whatsapp text-dark"></i></a>
                 </div>
             </div>
@@ -167,8 +167,8 @@
                             <img src="" class="card-img-top" alt="Aqui va una imagen">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">titulo</h5>
-                            <p class="card-text">precio</p>
+                            <h5 class="card-title">titulo</h5>                            
+                            <p>desde $ <span class="card-text">precio</span></p>
                             <button type="button" class="btn btn-warning" data-toggle="modal"
                                 data-target="#exampleModal">
                                 <i class="fa-solid fa-cart-shopping text-dark bi bi-cart"></i>
@@ -184,7 +184,7 @@
 
         <!-- MODAL -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Carrito de Compra</h5>
@@ -196,26 +196,40 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Item</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Acción</th>
-                                <th scope="col">Total</th>
+                                <th class="display-5" scope="col">Nº</th>
+                                <th class="display-5" scope="col">Item</th>
+                                <th class="display-5" scope="col">Pasajeros</th>
+                                <th class="display-5" scope="col">Agregar/Eliminar</th>
+                                <th class="display-5" scope="col">Total</th>
                             </tr>
                         </thead>
                         <tbody id="items"></tbody>
                         <tfoot>
                             <tr id="footer">
-                                <th scope="row" colspan="5">Carrito vacío</th>
+                                <th class="text-carroVacio text-center" scope="row" colspan="5">Carrito vacío</th>
                             </tr>
                         </tfoot>
                     </table>
 
-
-
-
+                    <template id="template-carrito">
+                        <tr>
+                            <th scope="row">id</th>
+                            <td>Titulo</td>
+                            <td>Pasajeros</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">
+                                    +
+                                </button>                                
+                                <button class="btn btn-secondary btn-sm">
+                                    -
+                                </button>
+                            </td>
+                            <td>$ <span>Total</span></td>
+                        </tr>
+                    </template>
+                    
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Vaciar Carro</button>
                         <a href="" class="btn btn-warning" data-dismiss="modal">
                             <i class="fa-solid fa-cart-shopping text-dark bi bi-cart"></i>
                             Terminar Compra
