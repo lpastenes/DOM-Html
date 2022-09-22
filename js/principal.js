@@ -8,6 +8,7 @@ class Producto {
 }
 
 let baseDatos = [];
+<<<<<<< HEAD
 baseDatos.push(new Producto(1, "./img/airport.jpg", "Aeropuerto - Chicureo", 28000) )
 baseDatos.push(new Producto(2, "./img/tour_santiago.jpg", "City Tour Santiago", 30000) )
 baseDatos.push(new Producto(3, "./img/lan-chile.jpg", "Chicureo - Aeropuerto", 28000) )
@@ -18,6 +19,18 @@ baseDatos.push(new Producto(7, "./img/valle-nevado.jpg", "Aeropuerto - Valle Nev
 baseDatos.push(new Producto(8, "./img/valpo.jpg", "Aeropuerto - Valparaíso", 40000) )
 baseDatos.push(new Producto(9, "./img/vina-del-mar.jpg", "Aeropuerto - Viña del Mar", 40000) )
 baseDatos.push(new Producto(10, "./img/beach.jpg", "Tour Isla Negra", 30000) )
+=======
+baseDatos.push(new Producto(1, "./img/airport.jpg", "Aeropuerto - Chicureo", 50000) )
+baseDatos.push(new Producto(2, "./img/tour_santiago.jpg", "City Tour Santiago", 40000) )
+baseDatos.push(new Producto(3, "./img/lan-chile.jpg", "Chicureo - Aeropuerto", 40000) )
+baseDatos.push(new Producto(4, "./img/valpo.jpg", "Tour Valparaiso", 40000) )
+baseDatos.push(new Producto(5, "./img/vina-del-mar2.jpg", "Tour Viña del Mar", 40000) )
+baseDatos.push(new Producto(6, "./img/hotel.jpg", "Aeropuerto - Hotel", 50000) )
+baseDatos.push(new Producto(7, "./img/valle-nevado.jpg", "Aeropuerto - Valle Nevado", 50000) )
+baseDatos.push(new Producto(8, "./img/valpo.jpg", "Aeropuerto - Valparaíso", 50000) )
+baseDatos.push(new Producto(9, "./img/vina-del-mar.jpg", "Aeropuerto - Viña del Mar", 40000) )
+baseDatos.push(new Producto(10, "./img/beach.jpg", "Tour Isla Negra", 40000) )
+>>>>>>> 4053b88e25d0b9ebe708727238c0245b83855642
 
 let carrito = {}; // CARRITO DE COMPRA
 
