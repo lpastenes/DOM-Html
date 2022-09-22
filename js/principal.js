@@ -106,8 +106,20 @@ const renderCarrito = () => {
         const clone = templateCarrito.cloneNode(true);
         fragmento.appendChild(clone);
     });
-    items.appendChild(fragmento)
+    items.appendChild(fragmento)   
 };
+
+//VACIAR CARRITO
+const vaciarCarro = document.querySelector('#btn-vaciar-carrito')
+vaciarCarro.addEventListener('click', () => {
+    items.innerHTML = "";
+    carrito = {};
+    textCarro.querySelector('.text-carroVacio').textContent = "Carrito vacío";  // AGREGA TEXTO CARRO VACIO
+});
+
+
+
+
 
 
 
